@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 
 def main():
-    # Inicialização da SparkSession
+    # Inicializacao da SparkSession
     spark = (SparkSession.builder
              .appName("Modulo_1_SparkSQL")
              .master("local[*]")
@@ -30,10 +30,10 @@ def main():
     columns = ["Company", "Person", "Sales", "Date"]
     df = spark.createDataFrame(sales_data, columns)
 
-    # Registro de Tabela Temporária na Memória
+    # Registro de Tabela Temporaria na Memoria
     df.createOrReplaceTempView("vendas")
 
-    # Consulta ANSI SQL com Filtro, Agregação e Ordenação
+    # Consulta ANSI SQL com Filtro, Agregacao e Ordenacao
     query_sql = """
         SELECT Company, AVG(Sales) as Media_Vendas, COUNT(1) as Total_Transacoes
         FROM vendas
@@ -42,7 +42,7 @@ def main():
         ORDER BY Media_Vendas DESC
     """
     
-    print("\n--- Resultado da Consulta SQL em Memória ---")
+    print("\n--- Resultado da Consulta SQL em Memoria ---")
     spark.sql(query_sql).show()
 
     spark.stop()

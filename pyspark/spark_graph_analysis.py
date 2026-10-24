@@ -9,7 +9,7 @@ def main():
     
     spark.sparkContext.setLogLevel("WARN")
     print("=========================================================")
-    print("=== PILAR 3: ANÁLISE DE REDES E GRAFOS (CONCEITO GRAPHX) ==")
+    print("=== PILAR 3: ANALISE DE REDES E GRAFOS (CONCEITO GRAPHX) ==")
     print("=========================================================")
 
     sales_data = [
@@ -28,19 +28,19 @@ def main():
     ]
     df = spark.createDataFrame(sales_data, ["Company", "Person", "Sales"])
 
-    # Definição de Vértices (Pessoas)
+    # Definicao de Vertices (Pessoas)
     vertices = df.select(col("Person").alias("id")).distinct()
-    print("\n--- Vértices (Entidades Únicas) ---")
+    print("\n--- Vertices (Entidades Unicas) ---")
     vertices.show(5)
 
-    # Definição de Arestas (Relações de Transação entre Origem e Destino)
+    # Definicao de Arestas (Relacoes de Transacao entre Origem e Destino)
     edges = df.select(
         col("Person").alias("src"), 
         col("Company").alias("dst"), 
         col("Sales").alias("weight")
     )
 
-    print("--- Arestas Filtradas (Conexões de Transações de Alto Valor > 300) ---")
+    print("--- Arestas Filtradas (Conexoes de Transacoes de Alto Valor > 300) ---")
     edges.filter(col("weight") > 300).show()
 
     spark.stop()

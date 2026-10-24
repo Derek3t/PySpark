@@ -12,7 +12,7 @@ def main():
     print("=========================================================")
     print("=== PILAR 4: STRUCTURED STREAMING (TEMPO REAL)        ===")
     print("=========================================================")
-    print("Simulando ingestão contínua de dados por 5 segundos...")
+    print("Simulando ingestao continua de dados por 5 segundos...")
 
     # Fonte em Tempo Real (Gerador 'rate' simulando 100 eventos/segundo)
     stream_df = (spark.readStream
@@ -21,10 +21,10 @@ def main():
                  .load()
                  .withColumn("valor_transacao", (col("value") * 37) % 1000))
 
-    # Regra de Negócio: Filtrar apenas transações com valor alto (Alertas)
+    # Regra de Negocio: Filtrar apenas transacoes com valor alto (Alertas)
     stream_alertas = stream_df.filter(col("valor_transacao") > 800)
 
-    # Escrevendo o resultado de forma contínua em uma tabela na memória
+    # Escrevendo o resultado de forma continua em uma tabela na memoria
     query_stream = (stream_alertas.writeStream
                     .queryName("alertas_streaming")
                     .format("memory")

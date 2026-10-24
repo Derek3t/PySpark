@@ -14,11 +14,11 @@ Projeto desenvolvido para a disciplina Processamento de Grandes Volumes de Dados
 
 ## Estrutura do Projeto
 
-O código foi modularizado em quatro pilares fundamentais da plataforma unificada do Spark:
-1. **`spark_sql.py`** — Processamento relacional de DataFrames e consultas ANSI SQL in-memory.
-2. **`spark_mllib.py`** — Machine learning distribuído com persistência de iterações em cache na RAM.
-3. **`spark_graph_analysis.py`** — Análise de redes e grafos relacionais (Conceito GraphX).
-4. **`spark_structured_streaming.py`** — Ingestão de fluxo contínuo de dados em tempo real (*Tabela Infinita*).
+O projeto possui scripts executáveis na pasta `pyspark/` e relatórios interativos integrados com cenários reais de mercado na pasta `Cenarios_Reais/` (Jupyter Notebooks):
+1. **`spark_sql.py` / `spark_sql.ipynb`** — Processamento relacional de DataFrames e consultas ANSI SQL in-memory.
+2. **`spark_mllib.py` / `spark_mllib.ipynb`** — Machine learning distribuído com persistência de iterações em cache na RAM.
+3. **`spark_graph_analysis.py` / `spark_graph_analysis.ipynb`** — Análise de redes e grafos relacionais (Conceito GraphX).
+4. **`spark_structured_streaming.py` / `spark_structured_streaming.ipynb`** — Ingestão de fluxo contínuo de dados em tempo real (*Tabela Infinita*).
 
 ---
 
@@ -44,19 +44,19 @@ Cada módulo pode ser executado de forma independente para demonstrações prát
 
 ### Pilar 1: Spark SQL
 ```bash
-python spark_sql.py
+python pyspark/spark_sql.py
 ```
 ### Pilar 2: MLlib (Regressão Linear)
 ```bash
-python spark_mllib.py
+python pyspark/spark_mllib.py
 ```
 ### Pilar 3: Análise de Grafos / Redes
 ```bash
-python spark_graph_analysis.py
+python pyspark/spark_graph_analysis.py
 ```
 ### Pilar 4: Structured Streaming (Tempo Real)
 ```bash
-python spark_structured_streaming.py
+python pyspark/spark_structured_streaming.py
 ```
 
 ### Conceitos Abordados

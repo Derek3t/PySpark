@@ -11,7 +11,7 @@ def main():
     
     spark.sparkContext.setLogLevel("WARN")
     print("=========================================================")
-    print("=== PILAR 2: SPARK MLLIB (MACHINE LEARNING DISTRIBUÍDO) ===")
+    print("=== PILAR 2: SPARK MLLIB (MACHINE LEARNING DISTRIBUIDO) ===")
     print("=========================================================")
 
     sales_data = [
@@ -30,21 +30,21 @@ def main():
     ]
     df = spark.createDataFrame(sales_data, ["Company", "Person", "Sales"])
 
-    # Preparando o Vetor de Características (Features)
+    # Preparando o Vetor de Caracteristicas (Features)
     assembler = VectorAssembler(inputCols=["Sales"], outputCol="features")
     df_ml = assembler.transform(df)
 
-    # Definindo a Variável Alvo (Target fictício: Meta = Sales * 1.1)
+    # Definindo a Variavel Alvo (Target ficticio: Meta = Sales * 1.1)
     df_ml = df_ml.withColumn("target", col("Sales") * 1.1)
 
-    # Treinando a Regressão Linear em Memória RAM
+    # Treinando a Regressao Linear em Memoria RAM
     lr = LinearRegression(featuresCol="features", labelCol="target")
     model = lr.fit(df_ml)
 
     print(f"\nModelo Treinado!")
     print(f"Coeficiente: {model.coefficients[0]:.2f} | Intercepto: {model.intercept:.2f}")
 
-    print("\n--- Predições Geradas pelo Modelo ---")
+    print("\n--- Predicoes Geradas pelo Modelo ---")
     predictions = model.transform(df_ml)
     predictions.select("Person", "Sales", "prediction").show(5)
 
