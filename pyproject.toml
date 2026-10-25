@@ -20,7 +20,8 @@ classifiers = [
 dependencies = [
     "pyspark>=3.3.0",
     "findspark>=1.4.2",
-    "py4j>=0.10.9"
+    "py4j>=0.10.9",
+    "numpy>=2.0.0"
 ]
 
 [project.optional-dependencies]
